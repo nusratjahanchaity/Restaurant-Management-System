@@ -1,0 +1,7 @@
+--- Order Summary ---
+Orders:
+Chicken Biryani x2 = 500.00
+Beef Kabab x3 = 900.00
+Order Total: 1,400.00
+
+Thank you for ordering!

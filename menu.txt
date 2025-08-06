@@ -1,0 +1,20 @@
+1|Chicken Biryani|250
+2|Beef Kabab|300
+3|Vegetable Curry|150
+4|Mutton Korma|400
+5|Fish Fry|350
+6|Prawn Malai Curry|380
+7|Dal Tadka|120
+8|Roti|20
+9|Naan|30
+10|Mixed Vegetable|180
+11|Paneer Butter Masala|220
+12|Chicken Tikka|320
+13|Lamb Chops|450
+14|Egg Curry|130
+15|Aloo Gobi|140
+16|Masala Chai|50
+17|Falooda|90
+18|Kheer|100
+19|Chicken Shawarma|280
+20|Beef Burger|330
