@@ -294,6 +294,24 @@ echo <<<HTML
 HTML;
     exit;
 }
+
+// Check if the sort button was clicked
+if (isset($_POST['sort_menu'])) {
+    if ($_SESSION['is_sorted'] ?? false) {
+        // If already sorted, unsort the menu by reloading the original menu
+        $_SESSION['menu'] = $menu; // Reload the original menu
+        $_SESSION['is_sorted'] = false; // Set sorted state to false
+    } else {
+        // Sort the menu by price
+        $_SESSION['menu'] = mergeSortMenu($menu);
+        $_SESSION['is_sorted'] = true; // Set sorted state to true
+    }
+    header('Location: index.php'); // Redirect to refresh the page
+    exit;
+}
+
+// Load the menu from the session (sorted or unsorted)
+$menuToDisplay = $_SESSION['menu'] ?? $menu;
 ?>
 
 <!DOCTYPE html>
@@ -429,6 +447,11 @@ HTML;
     }
     .add_order {
         font-size: 14px;
+    }
+    .menu-title{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
     }    
 </style>
 </head>
@@ -441,13 +464,20 @@ HTML;
 
     <!-- Menu Table -->
     <div class="section menu-div">
-        <h2>Menu</h2>
+        <div class="menu-title">
+            <h2>Menu</h2>
+            <form method="post">
+                <button type="submit" name="sort_menu">
+                    <?= ($_SESSION['is_sorted'] ?? false) ? 'Unsort' : 'Sort by Price' ?>
+                </button>
+            </form>
+        </div>
         <table class="menu-table">
             <thead>
                 <tr><th>Food ID</th><th>Name</th><th>Price (৳)</th><th>Quantity</th><th>Action</th></tr>
             </thead>
             <tbody class="menu-items">
-                <?php foreach ($menu as $item): ?>
+                <?php foreach ($menuToDisplay as $item): ?>
                 <tr>
                     <td><?= $item['id'] ?></td>
                     <td><?= htmlspecialchars($item['name']) ?></td>
